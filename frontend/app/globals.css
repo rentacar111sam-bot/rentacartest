@@ -1,0 +1,300 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  
+  body {
+    @apply bg-navy-900 text-white;
+  }
+  
+  /* Mobile bottom navigation padding */
+  @media (max-width: 768px) {
+    body {
+      padding-bottom: 4rem;
+      padding-top: 3.5rem;
+    }
+  }
+  
+  /* Desktop top navigation padding */
+  @media (min-width: 769px) {
+    body {
+      padding-top: 4rem;
+    }
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-white hover:bg-gray-100 text-navy-900 font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+  
+  .btn-secondary {
+    @apply bg-navy-700 hover:bg-navy-600 text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+  
+  .btn-success {
+    @apply bg-green-600 hover:bg-green-700 text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+  
+  .btn-danger {
+    @apply bg-red-600 hover:bg-red-700 text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+  
+  .btn-warning {
+    @apply bg-yellow-600 hover:bg-yellow-700 text-white font-medium py-3 sm:py-4 px-4 sm:px-6 rounded-lg transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-yellow-500 focus:ring-offset-2 focus:ring-offset-navy-900;
+  }
+  
+  .input-field {
+    @apply w-full px-3 sm:px-4 py-3 sm:py-4 border border-navy-600 rounded-lg bg-navy-800 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-colors duration-200 placeholder-navy-400;
+  }
+  
+  .input-field::placeholder {
+    color: rgb(148 163 184) !important;
+    opacity: 0.7 !important;
+  }
+  
+  .input-field:focus {
+    background-color: rgb(30 41 59) !important;
+  }
+  
+  .input-field:-webkit-autofill,
+  .input-field:-webkit-autofill:hover,
+  .input-field:-webkit-autofill:focus {
+    -webkit-text-fill-color: #ffffff !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgb(30 41 59) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+  }
+  
+  /* Select dropdown styling */
+  select {
+    color: #ffffff !important;
+    background-color: rgb(30 41 59) !important;
+  }
+  
+  select option {
+    color: #ffffff;
+    background-color: rgb(30 41 59);
+    padding: 12px 8px;
+  }
+  
+  select option:checked {
+    background: linear-gradient(#06b6d4, #06b6d4);
+    background-color: #0891b2 !important;
+  }
+  
+  /* Mobile select dropdown fix */
+  @media (max-width: 768px) {
+    select {
+      font-size: 16px !important; /* Prevents zoom on iOS */
+      max-height: 50vh; /* Limits dropdown height */
+    }
+    
+    select option {
+      padding: 16px 12px;
+      font-size: 16px;
+    }
+  }
+  
+  /* PhoneInput styling */
+  .phone-input {
+    @apply w-full;
+  }
+  
+  .phone-input .PhoneInputInput {
+    @apply w-full px-3 py-2 border border-navy-600 rounded-lg bg-navy-800 text-white focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-colors duration-200 placeholder-navy-400;
+    color: white !important;
+    background-color: rgb(30 41 59) !important;
+  }
+  
+  .phone-input .PhoneInputInput::placeholder {
+    color: rgb(148 163 184) !important;
+  }
+  
+  .phone-input .PhoneInputInput:focus {
+    background-color: rgb(30 41 59) !important;
+    color: white !important;
+  }
+  
+  .phone-input .PhoneInputCountry {
+    @apply bg-navy-800 border-r border-navy-600 rounded-l-lg;
+    margin-right: 0;
+  }
+  
+  .phone-input .PhoneInputCountrySelect {
+    @apply bg-navy-800 text-white border-none;
+    color: white !important;
+  }
+  
+  .phone-input .PhoneInputCountrySelectArrow {
+    @apply text-white opacity-70;
+  }
+  
+  .phone-input .PhoneInputCountryIcon {
+    @apply border border-navy-600;
+  }
+  
+  .phone-input .PhoneInputInput:focus {
+    @apply border-white;
+  }
+  
+  .card {
+    @apply bg-navy-800 rounded-xl shadow-lg border border-navy-700 overflow-hidden;
+  }
+  
+  .card-hover {
+    @apply hover:shadow-xl transition-shadow duration-300;
+  }
+  
+  .status-pending {
+    @apply bg-yellow-900 text-yellow-200 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-confirmed {
+    @apply bg-blue-900 text-blue-200 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-completed {
+    @apply bg-green-900 text-green-200 px-2 py-1 rounded-full text-xs font-medium;
+  }
+  
+  .status-cancelled {
+    @apply bg-red-900 text-red-200 px-2 py-1 rounded-full text-xs font-medium;
+  }
+}
+
+@layer utilities {
+  .text-gradient {
+    @apply bg-gradient-to-r from-white to-gray-200 bg-clip-text text-transparent;
+  }
+  
+  .bg-gradient-primary {
+    @apply bg-gradient-to-r from-navy-800 to-navy-900;
+  }
+  
+  .shadow-glow {
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  
+  /* Loading animation */
+  @keyframes pulse-glow {
+    0%, 100% {
+      opacity: 1;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+    }
+    50% {
+      opacity: 0.5;
+      box-shadow: 0 0 40px rgba(255, 255, 255, 0.2);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes slide-in {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-in {
+    animation: slide-in 0.5s ease-out;
+  }
+  
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-in;
+  }
+  
+  @keyframes slide-down {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  .animate-slide-down {
+    animation: slide-down 0.5s ease-out;
+  }
+}
+
+/* Phone Input Styling */
+.phone-input-wrapper {
+  width: 100%;
+}
+
+.phone-input-wrapper input {
+  @apply w-full bg-navy-700 border border-navy-600 rounded-lg px-4 py-2 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all;
+}
+
+.phone-input-wrapper input::placeholder {
+  @apply text-gray-400;
+}
+
+.PhoneInputCountrySelect {
+  @apply hidden;
+}
+
+.PhoneInputCountrySelectArrow {
+  @apply hidden;
+}
+
+  /* Phone Input Custom Styles */
+  .phone-input-custom {
+    width: 100%;
+  }
+  
+  .phone-input-custom .PhoneInputInput {
+    @apply w-full bg-navy-800 border border-navy-700 rounded-lg px-4 py-2.5 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-white focus:border-transparent transition-all duration-200;
+  }
+  
+  .phone-input-custom .PhoneInputCountry {
+    @apply bg-navy-800 border border-navy-700 rounded-l-lg px-3 py-2.5;
+  }
+  
+  .phone-input-custom .PhoneInputCountryIcon {
+    @apply w-6 h-6;
+  }
+  
+  .phone-input-custom .PhoneInputCountrySelectArrow {
+    @apply text-white opacity-50;
+  }
+
+
+/* Date input styling for booked dates */
+input[type="date"] {
+  color-scheme: dark;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+  cursor: pointer;
+}
+
+/* Disable specific dates in calendar */
+input[type="date"]:disabled {
+  background-color: rgb(30 41 59);
+  opacity: 0.5;
+  cursor: not-allowed;
+}

@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /admin
+Disallow: /_next
+Disallow: /api
+
+Sitemap: https://rentcar.uz/sitemap.xml

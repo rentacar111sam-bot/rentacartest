@@ -1,0 +1,18 @@
+Bu test fayli. Haqiqiy APK faylni bu yerga joylashtiring.
+
+APK faylni qanday yaratish:
+
+1. Android Studio'da loyihani oching
+2. Build > Build Bundle(s) / APK(s) > Build APK(s)
+3. Tayyor APK faylni bu papkaga ko'chiring
+
+Yoki Capacitor orqali:
+cd frontend
+npm run build
+npx cap sync android
+npx cap open android
+# Android Studio'da Build > Build APK
+
+Keyin tayyor APK faylni:
+frontend/public/apk/rentcar.apk
+ga joylashtiring.
