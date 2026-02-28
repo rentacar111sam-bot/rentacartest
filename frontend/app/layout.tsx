@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
 import './globals.css'
 import { Toaster } from 'react-hot-toast'
-
-const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'RentCar - Avtomobil Ijarasi',
@@ -75,7 +72,7 @@ export default function RootLayout({
         <link rel="prefetch" href="http://localhost:5000/api/cars" />
         <link rel="prefetch" href="http://localhost:5000/api/categories" />
       </head>
-      <body className={inter.className}>
+      <body>
         <Toaster position="top-right" />
         {children}
       </body>
