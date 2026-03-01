@@ -1,194 +1,204 @@
-# RentCar - Avtomobil Ijarasi Tizimi
+# 🚗 RentCar - Avtomobil Ijarasi Tizimi
 
 Professional avtomobil ijarasi veb-sayt loyihasi Python Flask backend va Next.js frontend bilan.
 
-## 🚀 Xususiyatlar
+## ✨ Xususiyatlar
 
 - **Modern texnologiyalar**: Next.js 14, TypeScript, Tailwind CSS, Python Flask
 - **Responsive dizayn** - barcha qurilmalarda ishlaydi
 - **3 bosqichli bron qilish jarayoni**
-- **Xavfsiz fayl yuklash tizimi**
+- **Xavfsiz fayl yuklash va rasm siqish**
 - **Telegram bot integratsiyasi**
-- **Admin panel**
+- **Admin panel** - mashinalar va bronlarni boshqarish
 - **JWT autentifikatsiya**
+- **PostgreSQL ma'lumotlar bazasi**
 
 ## 📋 Talablar
 
-### Backend uchun:
-- Python 3.8+
-- pip
+- **Python** 3.8+
+- **Node.js** 16+
+- **PostgreSQL** (Supabase yoki lokal)
 
-### Frontend uchun:
-- Node.js 16+
-- npm yoki yarn
+## 🚀 Lokal Ishga Tushirish
 
-## 🛠️ O'rnatish
-
-### 1. Loyihani klonlash
+### 1. Loyihani Klonlash
 ```bash
 git clone <repository-url>
 cd rentcar
 ```
 
-### 2. Backend o'rnatish va ishga tushirish
-
-#### Avtomatik usul:
+### 2. Backend Sozlash
 ```bash
-python start.py
-```
+# Python kutubxonalarini o'rnatish
+python -m pip install -r requirements.txt
 
-#### Qo'lda o'rnatish:
-```bash
-# Virtual environment yaratish (ixtiyoriy)
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-# yoki
-venv\Scripts\activate  # Windows
+# Ma'lumotlar bazasini yaratish
+python init_project.py
 
-# Kutubxonalarni o'rnatish
-pip install -r requirements.txt
-
-# Ma'lumotlar bazasini sozlash
-python run.py init-db
-
-# Serverni ishga tushirish
+# Backend serverni ishga tushirish
 python run.py
 ```
 
-### 3. Frontend o'rnatish va ishga tushirish
+Backend: http://localhost:5000
 
-Yangi terminal ochib:
+### 3. Frontend Sozlash
 ```bash
+# Yangi terminal ochib
 cd frontend
 npm install
 npm run dev
 ```
 
-## 🌐 Kirish manzillari
+Frontend: http://localhost:3000
 
-- **Frontend**: http://localhost:3000
-- **Backend API**: http://localhost:5000/api
-- **Bron qilish**: http://localhost:3000/booking?car=1
-- **Mashinalar**: http://localhost:3000/cars
+## 🌐 Kirish Manzillari
 
-## 👤 Admin ma'lumotlari
+| Sahifa | URL |
+|--------|-----|
+| Frontend | http://localhost:3000 |
+| Admin Panel | http://localhost:3000/admin |
+| Backend API | http://localhost:5000/api |
+| API Health | http://localhost:5000/api/health |
 
-- **Username**: admin
-- **Password**: admin123
+## 🔐 Admin Ma'lumotlari
 
-## 📁 Loyiha tuzilishi
+- **Username**: `admin`
+- **Password**: `101110`
+
+## 📁 Loyiha Tuzilishi
 
 ```
 rentcar/
-├── app.py                 # Flask ilovasi
-├── models.py             # Ma'lumotlar bazasi modellari
-├── requirements.txt      # Python kutubxonalari
-├── start.py             # Ishga tushirish skripti
-├── .env                 # Muhit o'zgaruvchilari
-├── routes/              # API yo'nalishlari
-│   ├── cars.py
-│   ├── bookings.py
-│   ├── contact.py
-│   ├── admin.py
-│   └── auth.py
-├── utils/               # Yordamchi funksiyalar
-│   ├── telegram.py
-│   └── file_upload.py
-├── uploads/             # Yuklangan fayllar
-└── frontend/            # Next.js frontend
-    ├── app/
-    ├── components/
-    ├── lib/
-    └── types/
+├── app.py                      # Flask ilovasi
+├── models.py                   # Ma'lumotlar bazasi modellari
+├── requirements.txt            # Python kutubxonalari
+├── run.py                      # Server ishga tushirish
+├── init_project.py             # DB yaratish
+├── security.py                 # Xavfsizlik funksiyalari
+├── .env                        # Muhit o'zgaruvchilari
+├── check_database.py           # DB tekshirish
+├── routes/                     # API yo'nalishlari
+│   ├── admin.py               # Admin endpoints
+│   ├── auth.py                # Autentifikatsiya
+│   ├── bookings.py            # Bronlar
+│   ├── cars.py                # Mashinalar
+│   ├── categories.py          # Kategoriyalar
+│   ├── contact.py             # Xabarlar
+│   ├── telegram_admin.py      # Telegram admin
+│   ├── apk.py                 # APK endpoints
+│   └── user.py                # Foydalanuvchilar
+├── utils/                      # Yordamchi funksiyalar
+│   ├── telegram.py            # Telegram bot
+│   └── file_upload.py         # Fayl yuklash
+├── uploads/                    # Yuklangan fayllar
+└── frontend/                   # Next.js frontend
+    ├── app/                   # Next.js pages
+    ├── components/            # React komponentlar
+    ├── lib/                   # Utility funksiyalar
+    ├── types/                 # TypeScript types
+    └── public/                # Statik fayllar
 ```
 
 ## ⚙️ Sozlamalar
 
-`.env` faylida quyidagi sozlamalarni o'zgartiring:
+`.env` faylida muhim sozlamalar:
 
 ```env
 # Ma'lumotlar bazasi
-DATABASE_URL=sqlite:///rentcar.db
+DATABASE_URL=postgresql://...
 
 # Telegram Bot
-TELEGRAM_BOT_TOKEN=YOUR_BOT_TOKEN_HERE
-TELEGRAM_CHAT_ID=YOUR_CHAT_ID_HERE
+TELEGRAM_BOT_TOKEN=your_bot_token
+TELEGRAM_CHAT_ID=your_chat_id
 
 # Admin
 ADMIN_USERNAME=admin
-ADMIN_PASSWORD=admin123
+ADMIN_PASSWORD=101110
 
 # Xavfsizlik
-SECRET_KEY=your-secret-key-here
-JWT_SECRET_KEY=jwt-secret-key-here
+SECRET_KEY=your-secret-key
+JWT_SECRET_KEY=jwt-secret-key
 ```
 
-## 🔧 API Endpoints
+## 🔧 Asosiy API Endpoints
 
-### Cars
+### Mashinalar
 - `GET /api/cars` - Barcha mashinalar
 - `GET /api/cars?id=1` - Bitta mashina
 - `POST /api/cars` - Yangi mashina (admin)
-- `PUT /api/cars/{id}` - Mashinani yangilash (admin)
 - `DELETE /api/cars/{id}` - Mashinani o'chirish (admin)
 
-### Bookings
+### Bronlar
 - `GET /api/bookings` - Barcha bronlar
 - `POST /api/bookings` - Yangi bron
 - `PUT /api/bookings/{id}` - Bron statusini yangilash
-- `DELETE /api/bookings/{id}` - Bronni o'chirish
 
-### Contact
-- `POST /api/contact` - Xabar yuborish
-- `GET /api/contact` - Xabarlar ro'yxati (admin)
-
-### Auth
-- `POST /api/auth/login` - Kirish
+### Autentifikatsiya
+- `POST /api/auth/login` - Admin kirish
 - `GET /api/auth/me` - Joriy foydalanuvchi
-- `POST /api/auth/change-password` - Parolni o'zgartirish
 
-## 📱 Telegram Bot sozlash
+## 🚀 VPS ga Deploy Qilish
 
-1. @BotFather ga murojaat qiling
-2. `/newbot` buyrug'i bilan yangi bot yarating
-3. Bot tokenini `.env` fayliga qo'shing
-4. Chat ID ni olish uchun botga xabar yuboring va quyidagi URL ga kiring:
-   ```
-   https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates
-   ```
+### Variant 1: Systemd bilan Deploy
 
-## 🚀 Production uchun
-
-### Backend
 ```bash
-# Gunicorn o'rnatish
-pip install gunicorn
+# 1. Fayllarni serverga yuklash
+scp -r /path/to/rentcar root@your_server_ip:/root/
 
-# Serverni ishga tushirish
-gunicorn -w 4 -b 0.0.0.0:5000 app:app
+# 2. Serverda deploy skriptini ishga tushirish
+cd /root/rentcar
+chmod +x deploy.sh
+./deploy.sh
 ```
 
-### Frontend
+**Yo'riqnomalar:**
+- `DEPLOY_QUICK.md` - Tezkor deploy (5 daqiqa)
+- `VPS_DEPLOYMENT_GUIDE.md` - To'liq yo'riqnoma
+- `DEPLOY_CHECKLIST.md` - Tekshirish ro'yxati
+
+### Variant 2: PM2 bilan Deploy (Tavsiya etiladi)
+
 ```bash
-cd frontend
-npm run build
-npm start
+# 1. Fayllarni serverga yuklash
+scp -r /path/to/rentcar root@your_server_ip:/root/
+
+# 2. PM2 deploy skriptini ishga tushirish
+cd /root/rentcar
+chmod +x deploy-pm2.sh
+./deploy-pm2.sh
 ```
 
-## 🤝 Hissa qo'shish
+**PM2 Yo'riqnomalar:**
+- `PM2_QUICK_START.md` - Tezkor boshlash
+- `PM2_DEPLOYMENT.md` - To'liq yo'riqnoma
+- `ecosystem.config.js` - PM2 konfiguratsiya
 
-1. Fork qiling
-2. Feature branch yarating (`git checkout -b feature/AmazingFeature`)
-3. O'zgarishlarni commit qiling (`git commit -m 'Add some AmazingFeature'`)
-4. Branch ga push qiling (`git push origin feature/AmazingFeature`)
-5. Pull Request oching
+**PM2 Buyruqlari:**
+```bash
+pm2 list                    # Status
+pm2 logs                    # Loglar
+pm2 restart all             # Restart
+pm2 monit                   # Monitoring
+```
 
-## 📄 Litsenziya
+## 🛠️ Foydali Skriptlar
 
-Bu loyiha MIT litsenziyasi ostida tarqatiladi.
+```bash
+# Ma'lumotlar bazasini tekshirish
+python check_database.py
+
+# Loyihani yangilash (VPS da)
+./update.sh
+
+# Backend serverni ishga tushirish
+python run.py
+
+# Frontend serverni ishga tushirish
+cd frontend && npm run dev
+```
 
 ## 📞 Yordam
 
-Savollar yoki muammolar bo'lsa, issue oching yoki quyidagi manzilga murojaat qiling:
-- Email: support@rentcar.uz
-- Telegram: @rentcar_support
+Muammolar yuzaga kelsa:
+- `DEPLOY_CHECKLIST.md` - Deploy tekshiruvi
+- GitHub Issues - Muammolarni xabar qilish

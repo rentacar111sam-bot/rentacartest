@@ -65,6 +65,7 @@ uploads/
 # Environment
 .env.local
 .env.*.local
+.env.production
 
 # OS
 .DS_Store
