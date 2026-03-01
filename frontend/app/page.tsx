@@ -25,7 +25,8 @@ export default function HomePage() {
   const loadCategories = async () => {
     try {
       setLoading(true)
-      const response = await fetch('http://localhost:5000/api/categories')
+      const apiUrl = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:5000/api'
+      const response = await fetch(`${apiUrl}/categories`)
       const data = await response.json()
       setCategories(Array.isArray(data) ? data : [])
       
